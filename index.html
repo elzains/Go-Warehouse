@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ibrahimy Space</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title" style="text-align: center">ENTRI DATA WAREHOUSE</div>
+      <div class="content">
+        <form name="#">
+          <div id="form_alerts"></div>
+          <div class="user-details">
+            <div class="input-box">
+              <label for="NAMA PRODUK" class="form-label">NAMA PRODUK</label>
+              <input
+                type="text"
+                id="NAMA PRODUK"
+                name="NAMA PRODUK"
+                class="form-control"
+                placeholder="Masukkan Nama Produk"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="KATEGORI" class="form-label">KATEGORI</label>
+              <select
+                type="text"
+                id="KATEGORI"
+                name="KATEGORI"
+                class="form-control"
+                placeholder="Pilih Kategori Produk "
+                required
+              >
+                <option>--Pilih Kategori Produk--</option>
+                <option>Buku & Alat Tulis</option>
+                <option>Perlengkapan Rumah</option>
+                <option>Souvenir & Pesta</option>
+                <option>Komputer & Aksesoris</option>
+                <option>Hobi & Koleksi</option>
+                <option>Fotografi</option>
+                <option>Fashion Muslim</option>
+                <option>Olahraga & Outdoor</option>
+                <option>Kesehatan</option>
+                <option>Jam Tangan</option>
+              </select>
+            </div>
+            <div class="input-box">
+              <label for="HARGA BELI" class="form-label">HARGA BELI</label>
+              <input
+                type="number"
+                id="HARGA BELI"
+                name="HARGA BELI"
+                class="form-control"
+                placeholder="Masukkan Harga Beli "
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="JUMLAH PRODUK" class="form-label"
+                >JUMLAH PRODUK</label
+              >
+              <input
+                type="number"
+                id="JUMLAH PRODUK"
+                name="JUMLAH PRODUK"
+                class="form-control"
+                placeholder="Masukkan Jumlah Produk "
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="TERJUAL" class="form-label">TERJUAL</label>
+              <input
+                type="number"
+                id="TERJUAL"
+                name="TERJUAL"
+                class="form-control"
+                placeholder="Masukan Jumlah Terjual "
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="STOCK" class="form-label">STOCK</label>
+              <input
+                type="number"
+                id="STOCK"
+                name="STOCK"
+                class="form-control"
+                placeholder="Masukan Jumlah Stock "
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="HARGA JUAL" class="form-label">HARGA JUAL</label>
+              <input
+                type="number"
+                id="HARGA JUAL"
+                name="HARGA JUAL"
+                class="form-control"
+                placeholder="Masukan Harga Jual"
+                required
+              />
+            </div>
+            <div class="input-box">
+              <label for="DATA ENTRY" class="form-label">DATA ENTRY</label>
+              <input
+                type="text"
+                id="DATA ENTRY"
+                name="DATA ENTRY"
+                class="form-control"
+                placeholder="Masukan Data Entry"
+                required
+              />
+            </div>
+          </div>
+          <div class="button">
+            <input type="submit" value="Kirim Registrasi" />
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxyoKg1UqYd8pDdq86gYV7wqhIseCJQNATuV7J7OFELTljoDRoctqD5gZlU_mGxnK39/exec";
+      const form = document.forms["#"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) =>
+            $("#form_alerts").html(
+              "<div class='alert alert-success'>Data berhasil dikirim.</div>"
+            )
+          )
+          .catch((error) =>
+            $("#form_alerts").html(
+              "<div class='alert alert-danger'>Data gagal terkirim!.</div>"
+            )
+          );
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
